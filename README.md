@@ -10,6 +10,17 @@ Algorithms Included:
 4. A* Search Algorithm
 5. Greedy Best-First Search
 
+Usage
+Run the program:
+For BFS, DFS, and UCS algorithms, run:
+bash
+Copy code
+python bfs_dfs_ucs.py
+For A* and Greedy Best-First Search algorithms, run:
+bash
+Copy code
+python Astar_greedy.py
+
 Features:
 Maze Customization: Users can modify the maze size and manually select the start and end points.
 Visualization: Watch the algorithm in action as it traverses the maze.
