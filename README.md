@@ -12,13 +12,12 @@ Algorithms Included:
 
 Usage
 Run the program:
-For BFS, DFS, and UCS algorithms, run:
-bash
-Copy code
+1. For BFS, DFS, and UCS algorithms, run:
+
 python bfs_dfs_ucs.py
-For A* and Greedy Best-First Search algorithms, run:
-bash
-Copy code
+
+2. For A* and Greedy Best-First Search algorithms, run:
+
 python Astar_greedy.py
 
 Features:
