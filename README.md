@@ -28,8 +28,17 @@ In Astar_greedy.py:
 Press 1 for A*.
 Press 2 for Greedy Best-First Search.
 
+
 Visualize the Algorithm:
 After selecting an algorithm, press the "Spacebar" to see the algorithm in action as it traverses the maze.
+
+
+Color coding:
+The start point is Red.
+The end point is Green.
+The traversal is visualized in Blue as the algorithm explores the maze.
+Once the path is found, it backtracks and highlights the final path in Green.
+
 
 Regenerate the Maze:
 Press the "S" key to regenerate the maze and start a new traversal.
