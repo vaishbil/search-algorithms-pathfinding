@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithm Efficiency Pie Chart</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; }
+  #chart-container {
+    width: 300px; /* Smaller container width */
+    margin: auto;
+  }
+</style>
+</head>
+<body>
+
+<h2>Algorithm Efficiency Comparison</h2>
+<div id="chart-container">
+  <canvas id="efficiencyChart" width="300" height="300"></canvas> <!-- Smaller canvas size -->
+</div>
+
+<script>
+  const ctx = document.getElementById('efficiencyChart').getContext('2d');
+  const efficiencyChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['BFS', 'DFS', 'UCS', 'A*', 'Greedy BFS'],
+      datasets: [{
+        label: 'Overall Efficiency Score',
+        data: [30, 25, 20, 15, 10], // Example scores; replace with actual calculated values if needed
+        backgroundColor: [
+          'rgba(54, 162, 235, 0.8)',  // Light blue
+          'rgba(255, 99, 132, 0.8)',  // Light red
+          'rgba(255, 206, 86, 0.8)',  // Light yellow
+          'rgba(75, 192, 192, 0.8)',  // Light green
+          'rgba(153, 102, 255, 0.8)'  // Light purple
+        ],
+        borderColor: [
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        tooltip: {
+          callbacks: {
+            label: function(tooltipItem) {
+              return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
