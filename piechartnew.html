@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Performance Pie Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            width: 45%;
+            max-width: 400px;
+            margin: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .charts-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Algorithm Performance Pie Charts (Without Delay)</h2>
+    <div class="charts-row">
+        <!-- Pie charts for Time Taken -->
+        <div class="chart-container">
+            <canvas id="timeTaken10x10"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="timeTaken20x20"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="timeTaken30x30"></canvas>
+        </div>
+    </div>
+    
+    <div class="charts-row">
+        <!-- Pie charts for Memory Usage -->
+        <div class="chart-container">
+            <canvas id="memoryUsage10x10"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="memoryUsage20x20"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="memoryUsage30x30"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Data from your table for each algorithm and maze size
+        const data = {
+            timeTaken: {
+                labels: ['BFS', 'DFS', 'UCS', 'A*', 'Greedy BFS'],
+                '10x10': [0.0808, 0.0506, 0.0801, 0.0742, 0.0768],
+                '20x20': [0.2188, 0.2249, 0.2209, 0.1780, 0.1763],
+                '30x30': [0.4082, 0.3187, 0.4207, 0.2551, 0.1682]
+            },
+            memoryUsage: {
+                labels: ['BFS', 'DFS', 'UCS', 'A*', 'Greedy BFS'],
+                '10x10': [9, 10, 10, 9, 9],
+                '20x20': [6, 13, 6, 12, 20],
+                '30x30': [22, 50, 22, 48, 37]
+            }
+        };
+
+        function createPieChart(context, title, data, labels) {
+            new Chart(context, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 99, 132, 0.6)'
+                        ]
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: title
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        window.onload = function() {
+            // Time Taken Pie Charts
+            createPieChart(document.getElementById('timeTaken10x10').getContext('2d'), 'Time Taken (10x10)', data.timeTaken['10x10'], data.timeTaken.labels);
+            createPieChart(document.getElementById('timeTaken20x20').getContext('2d'), 'Time Taken (20x20)', data.timeTaken['20x20'], data.timeTaken.labels);
+            createPieChart(document.getElementById('timeTaken30x30').getContext('2d'), 'Time Taken (30x30)', data.timeTaken['30x30'], data.timeTaken.labels);
+
+            // Memory Usage Pie Charts
+            createPieChart(document.getElementById('memoryUsage10x10').getContext('2d'), 'Memory Usage (10x10)', data.memoryUsage['10x10'], data.memoryUsage.labels);
+            createPieChart(document.getElementById('memoryUsage20x20').getContext('2d'), 'Memory Usage (20x20)', data.memoryUsage['20x20'], data.memoryUsage.labels);
+            createPieChart(document.getElementById('memoryUsage30x30').getContext('2d'), 'Memory Usage (30x30)', data.memoryUsage['30x30'], data.memoryUsage.labels);
+        };
+    </script>
+</body>
+</html>

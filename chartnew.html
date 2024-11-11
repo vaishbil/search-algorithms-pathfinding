@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithm Visualization Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+
+    .table-container {
+      width: 90%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9em;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+
+    table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    table th,
+    table td {
+      padding: 12px 15px;
+      border: 1px solid #dddddd;
+    }
+
+    table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    table tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+    }
+  </style>
+</head>
+<body>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Algorithm</th>
+          <th>Maze Size</th>
+          <th>Time Taken</th>
+          <th>Memory Usage</th>
+          <th>Path Length</th>
+          <th>Nodes Explored</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Data will be added here by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const data = [
+      { algorithm: "BFS", mazeSize: "10x10", timeTaken: "2.6469 s", memoryUsage: "9 nodes", pathLength: 15, nodesExplored: 50 },
+      { algorithm: "BFS", mazeSize: "20x20", timeTaken: "3.3636 s", memoryUsage: "6 nodes", pathLength: 24, nodesExplored: 60 },
+      { algorithm: "BFS", mazeSize: "30x30", timeTaken: "16.0046 s", memoryUsage: "20 nodes", pathLength: 48, nodesExplored: 299 },
+      { algorithm: "BFS", mazeSize: "40x40", timeTaken: "20.3946 s", memoryUsage: "20 nodes", pathLength: 37, nodesExplored: 378 },
+      { algorithm: "BFS", mazeSize: "50x50", timeTaken: "41.1671 s", memoryUsage: "35 nodes", pathLength: 75, nodesExplored: 750 },
+      { algorithm: "DFS", mazeSize: "10x10", timeTaken: "1.4869 s", memoryUsage: "10 nodes", pathLength: 15, nodesExplored: 22 },
+      { algorithm: "DFS", mazeSize: "20x20", timeTaken: "3.0792 s", memoryUsage: "13 nodes", pathLength: 32, nodesExplored: 42 },
+      { algorithm: "DFS", mazeSize: "30x30", timeTaken: "9.5481 s", memoryUsage: "51 nodes", pathLength: 66, nodesExplored: 145 },
+      { algorithm: "DFS", mazeSize: "40x50", timeTaken: "14.5527 s", memoryUsage: "75 nodes", pathLength: 95, nodesExplored: 201 },
+      { algorithm: "DFS", mazeSize: "50x50", timeTaken: "52.4412 s", memoryUsage: "222 nodes", pathLength: 257, nodesExplored: 809 },
+      { algorithm: "UCS", mazeSize: "10x10", timeTaken: "2.6419 s", memoryUsage: "10 nodes", pathLength: 15, nodesExplored: 50 },
+      { algorithm: "UCS", mazeSize: "20x20", timeTaken: "3.3650 s", memoryUsage: "6 nodes", pathLength: 24, nodesExplored: 60 },
+      { algorithm: "UCS", mazeSize: "30x30", timeTaken: "15.9759 s", memoryUsage: "21 nodes", pathLength: 48, nodesExplored: 298 },
+      { algorithm: "UCS", mazeSize: "40x50", timeTaken: "20.5500 s", memoryUsage: "20 nodes", pathLength: 37, nodesExplored: 379 },
+      { algorithm: "UCS", mazeSize: "50x50", timeTaken: "41.7074 s", memoryUsage: "35 nodes", pathLength: 75, nodesExplored: 757 },
+      { algorithm: "A*", mazeSize: "10x10", timeTaken: "1.9106 s", memoryUsage: "9 nodes", pathLength: 15, nodesExplored: 29 },
+      { algorithm: "A*", mazeSize: "20x20", timeTaken: "2.4818 s", memoryUsage: "12 nodes", pathLength: 24, nodesExplored: 33 },
+      { algorithm: "A*", mazeSize: "30x30", timeTaken: "8.6888 s", memoryUsage: "39 nodes", pathLength: 48, nodesExplored: 126 },
+      { algorithm: "A*", mazeSize: "40x40", timeTaken: "9.1779 s", memoryUsage: "57 nodes", pathLength: 37, nodesExplored: 120 },
+      { algorithm: "A*", mazeSize: "50x50", timeTaken: "22.2135 s", memoryUsage: "41 nodes", pathLength: 75, nodesExplored: 399 },
+      { algorithm: "Greedy BFS", mazeSize: "10x10", timeTaken: "2.3856 s", memoryUsage: "8 nodes", pathLength: 17, nodesExplored: 39 },
+      { algorithm: "Greedy BFS", mazeSize: "20x20", timeTaken: "2.4859 s", memoryUsage: "20 nodes", pathLength: 24, nodesExplored: 25 },
+      { algorithm: "Greedy BFS", mazeSize: "30x30", timeTaken: "7.4439 s", memoryUsage: "39 nodes", pathLength: 56, nodesExplored: 102 },
+      { algorithm: "Greedy BFS", mazeSize: "40x50", timeTaken: "7.1312 s", memoryUsage: "41 nodes", pathLength: 41, nodesExplored: 97 },
+      { algorithm: "Greedy BFS", mazeSize: "50x50", timeTaken: "9.8817 s", memoryUsage: "49 nodes", pathLength: 83, nodesExplored: 136 }
+    ];
+
+    const tableBody = document.getElementById("table-body");
+
+    data.forEach(row => {
+      const tr = document.createElement("tr");
+      Object.values(row).forEach(value => {
+        const td = document.createElement("td");
+        td.textContent = value;
+        tr.appendChild(td);
+      });
+      tableBody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>

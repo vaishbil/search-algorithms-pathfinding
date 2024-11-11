@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Performance Without Delay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        caption {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>Algorithm Performance (Without Delay)</caption>
+        <tr>
+            <th>Algorithm</th>
+            <th>Maze Size</th>
+            <th>Time Taken (s)</th>
+            <th>Memory Usage</th>
+            <th>Path Length</th>
+            <th>Nodes Explored</th>
+        </tr>
+        <tr>
+            <td rowspan="3">BFS</td>
+            <td>10x10</td>
+            <td>0.0808 s</td>
+            <td>9 nodes</td>
+            <td>19</td>
+            <td>57</td>
+        </tr>
+        <tr>
+            <td>20x20</td>
+            <td>0.2188 s</td>
+            <td>6 nodes</td>
+            <td>24</td>
+            <td>60</td>
+        </tr>
+        <tr>
+            <td>30x30</td>
+            <td>0.4082 s</td>
+            <td>22 nodes</td>
+            <td>45</td>
+            <td>296</td>
+        </tr>
+        <tr>
+            <td rowspan="3">DFS</td>
+            <td>10x10</td>
+            <td>0.0506 s</td>
+            <td>10 nodes</td>
+            <td>19</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>20x20</td>
+            <td>0.2249 s</td>
+            <td>13 nodes</td>
+            <td>32</td>
+            <td>42</td>
+        </tr>
+        <tr>
+            <td>30x30</td>
+            <td>0.3187 s</td>
+            <td>50 nodes</td>
+            <td>65</td>
+            <td>162</td>
+        </tr>
+        <tr>
+            <td rowspan="3">UCS</td>
+            <td>10x10</td>
+            <td>0.0801 s</td>
+            <td>10 nodes</td>
+            <td>19</td>
+            <td>57</td>
+        </tr>
+        <tr>
+            <td>20x20</td>
+            <td>0.2209 s</td>
+            <td>6 nodes</td>
+            <td>24</td>
+            <td>60</td>
+        </tr>
+        <tr>
+            <td>30x30</td>
+            <td>0.4207 s</td>
+            <td>22 nodes</td>
+            <td>45</td>
+            <td>297</td>
+        </tr>
+        <tr>
+            <td rowspan="3">A*</td>
+            <td>10x10</td>
+            <td>0.0742 s</td>
+            <td>9 nodes</td>
+            <td>19</td>
+            <td>44</td>
+        </tr>
+        <tr>
+            <td>20x20</td>
+            <td>0.1780 s</td>
+            <td>12 nodes</td>
+            <td>24</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>30x30</td>
+            <td>0.2551 s</td>
+            <td>48 nodes</td>
+            <td>45</td>
+            <td>128</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Greedy BFS</td>
+            <td>10x10</td>
+            <td>0.0768 s</td>
+            <td>9 nodes</td>
+            <td>21</td>
+            <td>45</td>
+        </tr>
+        <tr>
+            <td>20x20</td>
+            <td>0.1763 s</td>
+            <td>20 nodes</td>
+            <td>24</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>30x30</td>
+            <td>0.1682 s</td>
+            <td>37 nodes</td>
+            <td>47</td>
+            <td>83</td>
+        </tr>
+    </table>
+</body>
+</html>
