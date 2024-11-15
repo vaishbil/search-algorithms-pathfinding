@@ -197,6 +197,7 @@ def draw(win, grid):
                 pygame.draw.rect(win, YELLOW, (node.x, node.y, CELL_SIZE, CELL_SIZE), 2)
     draw_grid(win)
     pygame.display.update()
+    time.sleep(0.02)
 
 # Main Function
 def main():
